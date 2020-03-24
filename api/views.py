@@ -2,14 +2,18 @@ from flask import Blueprint
 from flask import jsonify
 from flask import request
 from . import db
-form .models import Movie
+from .models import Movie
 
 main = Blueprint('main', __name__)
 
-@main.route('/add/movie', methods=['POST'])
+@main.route('/add_movie', methods=['POST'])
 def add_movie():
     movie_data = request.get_json()
 
+    new_movie = Movie(title=movie_data['title'], rating=movie_data['rating'])
+
+    db.session.add(new_movie)
+    db.session.commit()
 
     return 'Done', 201
 
