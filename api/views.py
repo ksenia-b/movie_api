@@ -21,6 +21,10 @@ def add_movie():
 @main.route('/movies')
 def movies():
     print("we are in movie")
+    movie_list = Movie.query.all()
     movies = []
+
+    for movie in movie_list:
+        movies.append({'title': movie.title, 'rating': movie.rating})
 
     return jsonify({"movies": movies})
