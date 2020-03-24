@@ -17,7 +17,7 @@ function App() {
 
   return (
     <div className="App">
-        <Container>
+        <Container style={{ marginTop:40 }}>
             <MovieForm />
             <Movies movies={ movies }/>
         </Container>
